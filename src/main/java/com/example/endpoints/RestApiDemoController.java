@@ -32,10 +32,12 @@ public class RestApiDemoController {
    }
 	
 	@GetMapping("/{id}")
-	Optional<Coffee>findById(@PathVariable int id){
-			for(Coffee coffee:coffees)
-					if(coffee.getId().equals(id))
+	Optional<Coffee>findById(@PathVariable String id){
+			for(Coffee coffee:coffees) {
+					if(coffee.getId().equals(id)) {
 						return Optional.of(coffee);
+					         }
+					  }
 		return Optional.empty();
 	}
 	@PostMapping("")
@@ -45,7 +47,7 @@ public class RestApiDemoController {
 	}
 	
 	@PutMapping("/{id}")
-	ResponseEntity<Coffee>putCoffe(@PathVariable int id,
+	ResponseEntity<Coffee>putCoffe(@PathVariable String id,
 			@RequestBody Coffee newCoffee){
 		 int coffeeIndex=-1;
 		 for(Coffee coffee:coffees)  
